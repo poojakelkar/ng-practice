@@ -1,14 +1,29 @@
 import "./index.css";
 
 export default function App() {
-    const Card = ({ studentName, devRoute }) => {
+    const Card = ({ title, task }) => {
         return (
             <div className='card'>
-                <h2>{studentName}</h2>
-                <span>{devRoute}</span>
+                <h2>{title}</h2>
+                <span>{task}</span>
             </div>
         );
     };
+
+    const notesData = [
+        {
+            title: "whar are you doing",
+            task: "what task you added",
+        },
+        {
+            title: "add task name",
+            task: "task activities",
+        },
+        {
+            title: "abcd",
+            task: "123456",
+        },
+    ];
 
     return (
         <div className='App'>
@@ -21,9 +36,11 @@ export default function App() {
                 </form>
 
                 <section className='notes'>
-                    <Card studentName='pooja' devRoute='Adv front end' />
-                    <Card studentName='neha' devRoute='Adv full stack' />
-                    <Card studentName='priti' devRoute='front end' />
+                    {notesData.map((note) => {
+                        return (
+                            <Card title={note.title} task={note.task}></Card>
+                        );
+                    })}
                 </section>
             </div>
         </div>
